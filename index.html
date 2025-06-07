@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MI YERBA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body class="overflow-x-hidden bg-transparent">
+    <div class="video-container">
+      <video id="local-video" autoplay loop muted>
+        <source src="images/fondo.mp4" type="video/mp4" />
+        Tu navegador no soporta videos HTML5.
+      </video>
+    </div>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+  <script type="text/babel">
+function App() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  const menuItems = [
+    { label: "INICIO", href: "index.html" },
+    { label: "SERVICIOS", href: "pages/servicios.html" },
+    { label: "PRODUCTOS", href: "pages/productos.html" },
+    { label: "CONTACTOS", href: "pages/contactos.html" },
+    { label: "MINIJUEGO", href: "pages/minijuego.html" },
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col justify-between text-black relative z-10">
+      {/* Header transparente */}
+      <header className="py-4 px-6 text-center bg-transparent backdrop-blur-sm fixed top-0 left-0 w-full z-20">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center">
+          <div className="flex justify-between items-center w-full sm:w-auto">
+            <h1 className="text-3xl font-bold text-gray-900">
+              <span className="text-yellow-600">MI</span> YERBA
+            </h1>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="sm:hidden text-lg font-semibold p-2"
+              aria-label="Abrir menú"
+            >
+              ☰ Menú
+            </button>
+          </div>
+
+          <nav
+            className={`${
+              menuOpen ? "flex" : "hidden"
+            } sm:flex mt-4 sm:mt-0 text-lg`}
+          >
+            <div className="flex flex-col sm:flex-row items-center gap-x-6">
+              {menuItems.map(({ label, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  className="font-bold hover:text-yellow-600 py-2 sm:py-0"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {/* Contenido principal SIN FONDO BLANCO */}
+      <main className="flex flex-col md:flex-row items-center justify-center px-6 gap-8 pt-32 pb-24 md:pt-40 md:pb-16">
+        {/* Imagen del mate - transparente */}
+        <div className="w-full max-w-md">
+          <img
+            src="images/mate.png"
+            alt="Bombilla de mate"
+            className="w-full h-auto object-contain"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "mate.png";
+            }}
+          />
+        </div>
+
+        {/* Texto - transparente con sombra para mejor legibilidad */}
+        <div className="max-w-2xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 text-shadow">
+            <i className="fas fa-leaf text-yellow-500 mr-3"></i>
+            Compra tu yerba mate favorita aquí
+          </h2>
+          <div className="space-y-4 text-lg text-gray-800">
+            <div className="flex items-start">
+              <i className="fas fa-truck text-yellow-500 mt-1 mr-3 text-shadow"></i>
+              <p className="text-shadow">
+                Vendemos yerba mate premium importada directamente desde
+                Argentina, Paraguay y Uruguay.
+              </p>
+            </div>
+            <div className="flex items-start">
+              <i className="fas fa-home text-yellow-500 mt-1 mr-3 text-shadow"></i>
+              <p className="text-shadow">
+                Contamos con transportistas profesionales que llevan tu pedido a
+                la puerta de tu casa.
+              </p>
+            </div>
+            <div className="flex items-start">
+              <i className="fas fa-phone-alt text-yellow-500 mt-1 mr-3 text-shadow"></i>
+              <p className="text-shadow">
+                ¡Contáctanos ahora y disfruta del auténtico sabor!
+              </p>
+            </div>
+          </div>
+          <div className="mt-8">
+            <a
+              href="informacion.html"
+              className="btn-primary inline-block text-gray-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg"
+            >
+              <i className="fas fa-info-circle mr-2"></i>
+              MÁS INFORMACIÓN
+            </a>
+          </div>
+        </div>
+      </main>
+
+      {/* Footer con efecto de vidrio */}
+      <footer className="bg-white/90 backdrop-blur-sm py-6 px-6 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div className="flex items-center mb-4">
+                <span className="text-2xl font-bold text-yellow-600 mr-2">
+                  MI
+                </span>
+                <span className="text-2xl font-bold text-gray-900">YERBA</span>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Especialistas en yerba mate premium desde 2015.
+              </p>
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="social-icon text-gray-600 hover:text-blue-600"
+                >
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  className="social-icon text-gray-600 hover:text-pink-500"
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  className="social-icon text-gray-600 hover:text-blue-400"
+                >
+                  <i className="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Contacto</h3>
+              <div className="space-y-3">
+                <div className="flex items-start">
+                  <i className="fas fa-map-marker-alt text-yellow-500 mt-1 mr-3"></i>
+                  <div>
+                    <p className="text-gray-600">
+                      Av. la Fontana 1250, La Molina
+                    </p>
+                    <p className="text-gray-600">Lima 15024, Perú</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <i className="fas fa-phone text-yellow-500 mr-3"></i>
+                  <a
+                    href="tel:+51999888777"
+                    className="text-gray-600 hover:text-yellow-600"
+                  >
+                    +51 999 888 777
+                  </a>
+                </div>
+                <div className="flex items-center">
+                  <i className="fas fa-envelope text-yellow-500 mr-3"></i>
+                  <a
+                    href="mailto:contacto@miyerba.com"
+                    className="text-gray-600 hover:text-yellow-600"
+                  >
+                    contacto@miyerba.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Horario</h3>
+              <div className="space-y-3">
+                <div className="flex items-start">
+                  <i className="fas fa-clock text-yellow-500 mt-1 mr-3"></i>
+                  <div>
+                    <p className="font-medium text-gray-800">Lunes a Viernes</p>
+                    <p className="text-gray-600">9:00 AM - 7:00 PM</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <i className="fas fa-clock text-yellow-500 mt-1 mr-3"></i>
+                  <div>
+                    <p className="font-medium text-gray-800">Sábados</p>
+                    <p className="text-gray-600">9:00 AM - 2:00 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-200 text-center">
+            <p className="text-sm text-gray-500">
+              © {new Date().getFullYear()} MI YERBA. Todos los derechos
+              reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+</script>
+</body>
+</html>
