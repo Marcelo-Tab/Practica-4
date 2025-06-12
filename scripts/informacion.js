@@ -2,7 +2,7 @@ function App() {
   const [menuAbierto, setMenuAbierto] = React.useState(false);
 
   const menuItems = [
-    { label: "INICIO", href: "./index.html" },
+    { label: "INICIO", href: "index.html" },
     { label: "SERVICIOS", href: "servicios.html" },
     { label: "PRODUCTOS", href: "productos.html" },
     { label: "CONTACTOS", href: "contactos.html" },
