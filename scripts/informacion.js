@@ -2,12 +2,12 @@ function App() {
   const [menuAbierto, setMenuAbierto] = React.useState(false);
 
   const menuItems = [
-    { label: "INICIO", href: "../index.html" },
-    { label: "SERVICIOS", href: "servicios.html" },
-    { label: "PRODUCTOS", href: "productos.html" },
-    { label: "CONTACTOS", href: "contactos.html" },
-    { label: "MINIJUEGO", href: "minijuego.html" },
-  ];
+  { label: "INICIO", href: "../index.html" }, 
+  { label: "SERVICIOS", href: "../pages/servicios.html" },
+  { label: "PRODUCTOS", href: "../pages/productos.html" },
+  { label: "CONTACTOS", href: "../pages/contactos.html" },
+  { label: "MINIJUEGO", href: "../pages/minijuego.html" },
+];
 
   return (
     <div className="min-h-screen flex flex-col justify-between relative z-10">
